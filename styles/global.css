@@ -1,0 +1,93 @@
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 30px 120px -40px rgba(26, 21, 78, 0.15);
+}
+table * {
+  position: relative;
+}
+table td,
+table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #09134b;
+}
+th {
+  color: white;
+}
+table tbody tr {
+  height: 50px;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td,
+table th {
+  text-align: left;
+}
+table td.l,
+table th.l {
+  text-align: right;
+}
+table td.c,
+table th.c {
+  text-align: center;
+}
+table td.r,
+table th.r {
+  text-align: center;
+}
+
+table tbody tr:hover {
+  background-color: rgb(243, 243, 248);
+  cursor: default;
+}
+
+.m-0 {
+  margin: 0;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.mt-0 {
+  margin-top: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card .card-title {
+  margin-bottom: 10px;
+}
+
+hr {
+  opacity: 0.15;
+  margin-bottom: 10px;
+}
+.w-100 {
+  width: 100%;
+}
+
+.card ul,
+.card ul li {
+  display: flex;
+}
+.card ul li {
+  flex: 1;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}

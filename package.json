@@ -7,13 +7,19 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "27.1.0",
     "@ckeditor/ckeditor5-react": "3.0.2",
+    "@paljs/eva-icon": "^1.0.0",
     "@paljs/icons": "1.0.5",
     "@paljs/ui": "1.1.1",
     "@tinymce/tinymce-react": "3.12.3",
     "babel-plugin-styled-components": "^1.12.0",
-    "next": "^10.2.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "filepond": "^4.28.2",
+    "filepond-plugin-image-preview": "^4.6.7",
+    "firebase": "^8.7.1",
+    "next": "^11.0.1",
+    "next-firebase-auth": "^0.13.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-filepond": "^7.1.1",
     "styled-components": "5.2.3"
   },
   "keywords": [
@@ -37,9 +43,9 @@
     "url": "https://github.com/paljs/nextjs-admin-template/issues"
   },
   "devDependencies": {
-    "@types/node": "15.0.1",
-    "@types/react": "17.0.4",
-    "@types/react-dom": "17.0.3",
+    "@types/node": "^16.3.1",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
     "@types/react-select": "4.0.15",
     "@types/styled-components": "5.1.9",
     "@typescript-eslint/eslint-plugin": "4.22.0",
@@ -53,7 +59,7 @@
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "react-live": "2.2.3",
-    "typescript": "4.2.4"
+    "typescript": "^4.3.5"
   },
   "husky": {
     "hooks": {
