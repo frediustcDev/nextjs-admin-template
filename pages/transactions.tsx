@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 import Layout from "../Layouts";
 import MemoTable from "../components/MemoTable";
 
@@ -27,4 +28,7 @@ const Transactions = () => {
     </Layout>
   );
 };
-export default Transactions;
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  authPageURL: "/auth/login",
+})(Transactions);

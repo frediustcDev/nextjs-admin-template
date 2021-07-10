@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 import { Card, CardBody } from "@paljs/ui/Card";
 import { ButtonLink } from "@paljs/ui/Button";
 import { useRouter } from "next/router";
@@ -23,7 +24,7 @@ const ErrorStyle = styled.div`
   }
 `;
 
-export default function Live(): JSX.Element {
+const CreateLive: React.FC = () => {
   const router = useRouter();
   return (
     <Layout title="Direct" description="Faire un direct">
@@ -45,4 +46,9 @@ export default function Live(): JSX.Element {
       </Card>
     </Layout>
   );
-}
+};
+
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  authPageURL: "/auth/login",
+})(CreateLive);

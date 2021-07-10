@@ -8,7 +8,7 @@ const initAuth = () => {
     appPageURL: "/",
     loginAPIEndpoint: "/api/login", // required
     logoutAPIEndpoint: "/api/logout", // required
-    firebaseAuthEmulatorHost: "localhost:9099",
+    // firebaseAuthEmulatorHost: "localhost:9099",
     // Required in most cases.
     firebaseAdminInitConfig: {
       credential: {
@@ -23,11 +23,11 @@ const initAuth = () => {
           ? process.env.FIREBASE_PRIVATE_KEY_PROD
           : process.env.FIREBASE_PRIVATE_KEY_DEV,
       },
-      databaseURL: "https://my-example-app.firebaseio.com",
+      databaseURL: "https://genese-prod-9d981.firebaseio.com",
     },
     firebaseClientInitConfig: FIREBASE_CONFIG,
     cookies: {
-      name: "ExampleApp", // required
+      name: "Genese", // required
       // Keys are required unless you set `signed` to `false`.
       // The keys cannot be accessible on the client side.
       keys: [

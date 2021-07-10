@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 import Layout from "../../Layouts";
 import Row from "@paljs/ui/Row";
 import Col from "@paljs/ui/Col";
@@ -55,4 +56,7 @@ const Videos = () => {
     </Layout>
   );
 };
-export default Videos;
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  authPageURL: "/auth/login",
+})(Videos);

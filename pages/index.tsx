@@ -1,20 +1,18 @@
-import React from "react";
-import {
-  useAuthUser,
-  withAuthUser,
-  withAuthUserTokenSSR,
-} from "next-firebase-auth";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 
-const Demo = () => {
-  const AuthUser = useAuthUser();
-  return (
-    <div>
-      <p>Your email is {AuthUser.email ? AuthUser.email : "unknown"}.</p>
-    </div>
-  );
+const Index = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/fideles");
+  }, []);
+
+  return <div />;
 };
 
-// Note that this is a higher-order function.
-export const getServerSideProps = withAuthUserTokenSSR()();
-
-export default withAuthUser()(Demo);
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  authPageURL: "/auth/login",
+})(Index);

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 import Row from "@paljs/ui/Row";
 import Col from "@paljs/ui/Col";
 import { Card, CardBody } from "@paljs/ui/Card";
@@ -14,7 +15,7 @@ import Layout from "../../Layouts";
 
 registerPlugin(FilePondPluginImagePreview);
 
-const Home = () => {
+const AddVideo = () => {
   const [video, setVideo] = React.useState<File>(null);
   const [cover, setCover] = React.useState<File>(null);
 
@@ -108,4 +109,7 @@ const Home = () => {
     </Layout>
   );
 };
-export default Home;
+export default withAuthUser({
+  whenUnauthedAfterInit: AuthAction.REDIRECT_TO_LOGIN,
+  authPageURL: "/auth/login",
+})(AddVideo);

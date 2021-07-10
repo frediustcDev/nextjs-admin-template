@@ -1,14 +1,15 @@
 import { Button } from "@paljs/ui/Button";
 import { InputGroup } from "@paljs/ui/Input";
 import { Checkbox } from "@paljs/ui/Checkbox";
-import React from "react";
+import * as React from "react";
+import { withAuthUser, AuthAction } from "next-firebase-auth";
 import Link from "next/link";
 
 import Auth, { Group } from "../../components/Auth";
 import Socials from "../../components/Auth/Socials";
 import Layout from "../../Layouts";
 
-export default function Login() {
+const Login: React.FC = () => {
   const onCheckbox = () => {
     // v will be true or false
   };
@@ -34,4 +35,7 @@ export default function Login() {
       </Auth>
     </Layout>
   );
-}
+};
+export default withAuthUser({
+  whenAuthed: AuthAction.REDIRECT_TO_APP,
+})(Login);
