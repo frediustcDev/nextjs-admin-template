@@ -7,6 +7,8 @@ import { Actions } from "@paljs/ui/Actions";
 import ContextMenu from "@paljs/ui/ContextMenu";
 import User from "@paljs/ui/User";
 import { breakpointDown } from "@paljs/ui/breakpoints";
+import { Button } from "@paljs/ui/Button";
+import { AUTH_CLIENT } from "../server/FirebaseClient";
 
 const HeaderStyle = styled.div`
   display: flex;
@@ -71,34 +73,39 @@ const Header: React.FC<HeaderProps> = (props) => {
             },
           ]}
         />
-        <Actions
-          size="Small"
-          className="right"
-          actions={[
-            {
-              content: (
-                <ContextMenu
-                  nextJs
-                  style={{ cursor: "pointer" }}
-                  placement="bottom"
-                  currentPath={router.pathname}
-                  items={[
-                    { title: "Compte", link: { href: "/account" } },
-                    { title: "Deconnection", link: { href: "/logout" } },
-                  ]}
-                  Link={Link}
-                >
-                  <User
-                    image="url('/icons/icon-72x72.png')"
-                    name="Genese Administrator"
-                    title="Administrator"
-                    size="Medium"
-                  />
-                </ContextMenu>
-              ),
-            },
-          ]}
-        />
+        <div style={{ display: "flex" }}>
+          <Actions
+            size="Small"
+            className="right"
+            actions={[
+              {
+                content: (
+                  <ContextMenu
+                    nextJs
+                    style={{ cursor: "pointer" }}
+                    placement="bottom"
+                    currentPath={router.pathname}
+                    items={[{ title: "Compte", link: { href: "/account" } }]}
+                    Link={Link}
+                  >
+                    <User
+                      image="url('/icons/icon-72x72.png')"
+                      name="Genese Administrator"
+                      title="Administrator"
+                      size="Medium"
+                    />
+                  </ContextMenu>
+                ),
+              },
+            ]}
+          />
+          <Button
+            onClick={async () => await AUTH_CLIENT.signOut()}
+            status="Danger"
+          >
+            Deconnection
+          </Button>
+        </div>
       </HeaderStyle>
     </LayoutHeader>
   );

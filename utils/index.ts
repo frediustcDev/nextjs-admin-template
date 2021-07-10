@@ -21,5 +21,5 @@ const FIREBASE_CONFIG_PROD = {
 export const IS_PROD = process.env.NODE_ENV === "production";
 
 export const FIREBASE_CONFIG = IS_PROD
-  ? FIREBASE_CONFIG_DEV
-  : FIREBASE_CONFIG_PROD;
+  ? FIREBASE_CONFIG_PROD
+  : FIREBASE_CONFIG_DEV;

@@ -91,3 +91,7 @@ textarea {
   resize: vertical;
   min-height: 100px;
 }
+
+.message-error {
+  color: #eb3434;
+}
