@@ -12,12 +12,11 @@ const initAuth = () => {
     // Required in most cases.
     firebaseAdminInitConfig: {
       credential: {
-        projectId: IS_PROD
-          ? process.env.FIREBASE_PROJECT_ID_PROD
-          : process.env.FIREBASE_PROJECT_ID_DEV,
+        projectId: IS_PROD ? "genese-prod-9d981" : "genese-dev",
+
         clientEmail: IS_PROD
-          ? process.env.FIREBASE_EMAIL_PROD
-          : process.env.FIREBASE_EMAIL_DEV,
+          ? "firebase-adminsdk-rlren@genese-prod-9d981.iam.gserviceaccount.com"
+          : "firebase-adminsdk-i5mjp@genese-dev.iam.gserviceaccount.com",
         // The private key must not be accesssible on the client side.
         privateKey: IS_PROD
           ? process.env.FIREBASE_PRIVATE_KEY_PROD
@@ -38,7 +37,7 @@ const initAuth = () => {
       maxAge: 12 * 60 * 60 * 24 * 1000, // twelve days
       overwrite: true,
       path: "/",
-      sameSite: "strict",
+      // sameSite: "strict",
       secure: IS_PROD, // set this to false in local (non-HTTPS) development
       signed: true,
     },

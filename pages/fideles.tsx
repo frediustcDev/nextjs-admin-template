@@ -48,7 +48,7 @@ const Home = () => {
         columns={[
           { title: "Nom Complet", key: "fullname" },
           { title: "Email", key: "email" },
-          // { title: "Numero De Telephone", key: "number" },
+          { title: "Numero De Telephone", key: "number" },
           { title: "Plan", key: "plan" },
           { title: "Membre depuis", key: "createdAt" },
         ]}

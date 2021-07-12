@@ -1,5 +1,3 @@
-import firebase from "firebase";
-
 const FIREBASE_CONFIG_DEV = {
   apiKey: "AIzaSyBxNw3uB1kd5A7VMhHe0acewNEQgFrHjiY",
   authDomain: "genese-dev.firebaseapp.com",
@@ -37,7 +35,7 @@ export const FIREBASE_CONFIG = IS_PROD
   : FIREBASE_CONFIG_DEV;
 
 export const BASE_URL = IS_PROD
-  ? "https://genese.drosarl.com"
+  ? "https://genese-admin-v2.vercel.app"
   : "http://localhost:3000";
 
 export const MUX_TOKEN_ID = IS_PROD
@@ -67,6 +65,7 @@ export interface IUsersCollection extends IMemoTableData {
   access: "FIDELE" | "ADMIN";
   createdAt: string;
   fullname: string;
+  number: string;
   email: string;
   _id?: string;
   country?: {
