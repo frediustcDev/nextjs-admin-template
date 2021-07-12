@@ -6,28 +6,69 @@ import Col from "@paljs/ui/Col";
 import { Card, CardBody } from "@paljs/ui/Card";
 import { EvaIcon } from "@paljs/ui/Icon";
 import { Button } from "@paljs/ui/Button";
+import { IVideosCollection } from "../../utils";
+import { FIRESTORE_CLIENT } from "../../server/FirebaseClient";
+import firebase from "firebase";
+import moment from "moment";
 
 const Videos = () => {
+  const [videos, setVideos] = React.useState<IVideosCollection[]>([]);
+
+  const getVideos = async () => {
+    try {
+      const _videosResult = await FIRESTORE_CLIENT.collection("videos")
+        .orderBy("createdAt", "desc")
+        .get();
+
+      const _videos: IVideosCollection[] = _videosResult.docs.map((doc, i) => {
+        const _data: any = doc.data();
+
+        return {
+          _id: doc.id,
+          ..._data,
+          createdAt: moment(
+            (_data.createdAt as firebase.firestore.Timestamp).toDate()
+          ).format("DD MMMM YYYY"),
+        };
+      });
+
+      setVideos(_videos);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  React.useEffect(() => {
+    getVideos();
+  }, []);
+
   return (
     <Layout title="Videos" description="Liste de tous vos videos">
       <Row>
-        {[...Array(12)].map((_, i) => (
-          <Col key={i} breakPoint={{ xs: 12, sm: 12, md: 6, xl: 4, xxxl: 3 }}>
+        {videos.map((video, i) => (
+          <Col
+            key={video._id}
+            breakPoint={{ xs: 12, sm: 12, md: 6, xl: 4, xxxl: 3 }}
+          >
             <Card style={{ overflow: "hidden" }}>
-              <div className="card">
+              <div className="card" style={{ minHeight: 405 }}>
                 <div className="card-cover">
-                  <img src="/praise.jpg" className="w-100" alt="cover" />
+                  <div
+                    style={{
+                      height: 200,
+                      width: "100%",
+                      backgroundImage: `url('${video.coverURL}')`,
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                    }}
+                  />
+                  {/* <img src={video.coverURL} className="w-100" alt="cover" /> */}
                 </div>
                 <CardBody>
                   <div className="card-body">
-                    <h5 className="card-title mt-0">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </h5>
-                    <p className="card-description mt-0">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Dolores repellendus facilis fuga veritatis ducimus
-                      molestiae temporibus autem iusto!
-                    </p>
+                    <h5 className="card-title mt-0">{video.title}</h5>
+                    <p className="card-description mt-0">{video.description}</p>
                   </div>
                   <hr />
                   <Row>

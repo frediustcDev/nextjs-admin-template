@@ -17,16 +17,16 @@ let items: MenuItemType[] = [
     icon: { name: "activity-outline" },
     link: { href: "/transactions" },
   },
-  {
-    title: "Souscriptions",
-    icon: { name: "star-outline" },
-    link: { href: "/subscriptions" },
-  },
-  {
-    title: "Dons",
-    icon: { name: "heart-outline" },
-    link: { href: "/donations" },
-  },
+  // {
+  //   title: "Souscriptions",
+  //   icon: { name: "star-outline" },
+  //   link: { href: "/subscriptions" },
+  // },
+  // {
+  //   title: "Dons",
+  //   icon: { name: "heart-outline" },
+  //   link: { href: "/donations" },
+  // },
   {
     title: "INTERACTIONS",
     group: true,

@@ -1,28 +1,7 @@
 import * as React from "react";
+import { IMemoTableProps } from "../utils";
 
-interface IMemoTableColumn {
-  key: string;
-  title: string;
-}
-
-interface IMemoTableData {
-  key: string;
-  [columnKey: string]: any;
-}
-
-interface IMemoTableProps {
-  columns: IMemoTableColumn[];
-  data: IMemoTableData[];
-}
-
-const MemoTable: React.FC<IMemoTableProps> = ({
-  data: dataProps,
-  columns: columnsProps,
-}) => {
-  const data = React.useMemo(() => dataProps, []);
-
-  const columns = React.useMemo(() => columnsProps, []);
-
+const MemoTable: React.FC<IMemoTableProps> = ({ data, columns }) => {
   console.log(columns);
 
   return (
